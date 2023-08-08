@@ -10,6 +10,7 @@ import "package:weather_flutter/domain/model/weather.dart";
 @injectable
 class WeatherService {
   Future<List<Weather>> fetch(
+    String cityName,
     double latitude,
     double longitude,
     String timezone,
@@ -27,7 +28,7 @@ class WeatherService {
       var json = jsonDecode(response.body);
       var forecast = ForecastWeatherResponse.fromJson(json);
 
-      return forecast.toWeatherList();
+      return forecast.toWeatherList(cityName);
     } else {
       throw Exception("Failed to fetch forecast API");
     }

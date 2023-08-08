@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:weather_flutter/color_schemes.g.dart";
 import "package:weather_flutter/presentation/home/home_screen.dart";
 
 class MyApp extends StatelessWidget {
@@ -7,12 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Demo",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      title: "Weather App",
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(Weather? weather) setWeather,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(Weather? weather)? setWeather,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(Weather? weather)? setWeather,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_SetWeather value) setWeather,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_SetWeather value)? setWeather,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_SetWeather value)? setWeather,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +111,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(Weather? weather) setWeather,
   }) {
     return started();
   }
@@ -113,6 +120,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(Weather? weather)? setWeather,
   }) {
     return started?.call();
   }
@@ -121,6 +129,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(Weather? weather)? setWeather,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -133,6 +142,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_SetWeather value) setWeather,
   }) {
     return started(this);
   }
@@ -141,6 +151,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_SetWeather value)? setWeather,
   }) {
     return started?.call(this);
   }
@@ -149,6 +160,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_SetWeather value)? setWeather,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -160,6 +172,139 @@ class _$_Started implements _Started {
 
 abstract class _Started implements HomeEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$$_SetWeatherCopyWith<$Res> {
+  factory _$$_SetWeatherCopyWith(
+          _$_SetWeather value, $Res Function(_$_SetWeather) then) =
+      __$$_SetWeatherCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Weather? weather});
+}
+
+/// @nodoc
+class __$$_SetWeatherCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$_SetWeather>
+    implements _$$_SetWeatherCopyWith<$Res> {
+  __$$_SetWeatherCopyWithImpl(
+      _$_SetWeather _value, $Res Function(_$_SetWeather) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? weather = freezed,
+  }) {
+    return _then(_$_SetWeather(
+      freezed == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SetWeather implements _SetWeather {
+  const _$_SetWeather(this.weather);
+
+  @override
+  final Weather? weather;
+
+  @override
+  String toString() {
+    return 'HomeEvent.setWeather(weather: $weather)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SetWeather &&
+            (identical(other.weather, weather) || other.weather == weather));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, weather);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SetWeatherCopyWith<_$_SetWeather> get copyWith =>
+      __$$_SetWeatherCopyWithImpl<_$_SetWeather>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Weather? weather) setWeather,
+  }) {
+    return setWeather(weather);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Weather? weather)? setWeather,
+  }) {
+    return setWeather?.call(weather);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Weather? weather)? setWeather,
+    required TResult orElse(),
+  }) {
+    if (setWeather != null) {
+      return setWeather(weather);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SetWeather value) setWeather,
+  }) {
+    return setWeather(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SetWeather value)? setWeather,
+  }) {
+    return setWeather?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SetWeather value)? setWeather,
+    required TResult orElse(),
+  }) {
+    if (setWeather != null) {
+      return setWeather(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetWeather implements HomeEvent {
+  const factory _SetWeather(final Weather? weather) = _$_SetWeather;
+
+  Weather? get weather;
+  @JsonKey(ignore: true)
+  _$$_SetWeatherCopyWith<_$_SetWeather> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
