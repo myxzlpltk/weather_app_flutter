@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:weather_flutter/presentation/home/bloc/home_bloc.dart";
+import "package:weather_flutter/presentation/home/component/weather_info_panel.dart";
 import "package:weather_flutter/presentation/home/component/weather_info_section.dart";
 
 class HomeScreen extends StatelessWidget {
@@ -31,8 +32,50 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               child: SafeArea(
-                child: WeatherInfoSection(
-                  weather: weather,
+                child: Column(
+                  children: [
+                    WeatherInfoSection(
+                      weather: weather,
+                    ),
+                    const Spacer(),
+                    Container(
+                      margin: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.white70,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IntrinsicHeight(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: WeatherInfoPanel(
+                                title: "Humidity",
+                                metric: "${weather.humidity}%",
+                              ),
+                            ),
+                            const VerticalDivider(width: 1),
+                            Expanded(
+                              child: WeatherInfoPanel(
+                                title: "Wind Speed",
+                                metric: "${weather.windSpeed} km/h",
+                              ),
+                            ),
+                            const VerticalDivider(width: 1),
+                            Expanded(
+                              child: WeatherInfoPanel(
+                                title: "Precipitation",
+                                metric: "${weather.precipitationProbability}%",
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),

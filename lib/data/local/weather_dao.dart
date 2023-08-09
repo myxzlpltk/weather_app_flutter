@@ -4,7 +4,7 @@ import "package:weather_flutter/data/local/local_weather.dart";
 
 @injectable
 class WeatherDAO {
-  void insertAll(List<LocalWeather> weathers) async {
+  Future<void> insertAll(List<LocalWeather> weathers) async {
     var box = await Hive.openBox<LocalWeather>("weathers");
     await Future.wait(weathers.map((weather) => box.put(weather.id, weather)));
     await box.close();
@@ -18,7 +18,7 @@ class WeatherDAO {
     return localWeather;
   }
 
-  void clearAll() async {
+  Future<void> clearAll() async {
     var box = await Hive.openBox<LocalWeather>("weathers");
     await box.clear();
     await box.close();

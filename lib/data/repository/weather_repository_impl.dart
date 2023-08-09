@@ -29,7 +29,8 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
     // Sync to local
     var localWeathers = weathers.map((e) => e.toLocal()).toList();
-    weatherDAO.insertAll(localWeathers);
+    await weatherDAO.clearAll();
+    await weatherDAO.insertAll(localWeathers);
   }
 
   @override
