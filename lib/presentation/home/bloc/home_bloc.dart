@@ -50,6 +50,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     var weather = event.weather;
 
     if (weather == null) {
+      add(const HomeEvent.started());
       emit(const HomeState.error("Empty data!"));
     } else {
       emit(HomeState.loaded(weather));
