@@ -1,24 +1,29 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
+import "package:provider/provider.dart";
 import "package:weather_flutter/presentation/home/component/weather_info.dart";
-import "package:weather_flutter/presentation/home/home_controller.dart";
+import "package:weather_flutter/presentation/home/home_model.dart";
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.put(HomeController());
+    return ChangeNotifierProvider(
+      create: (context) => HomeModel(),
+      child: Scaffold(
+        body: Consumer<HomeModel>(
+          builder: (context, cartModel, _) {
+            var errorMessage = cartModel.errorMessage;
+            var weather = cartModel.weather;
 
-    return Scaffold(
-      body: controller.obx(
-        (weather) => weather != null
-            ? WeatherInfo(weather: weather)
-            : const Center(child: Text("Empty data")),
-        onEmpty: const Center(child: Text("Empty data")),
-        onLoading: const Center(child: CircularProgressIndicator()),
-        onError: (error) => Center(
-          child: Text(error ?? "Something went wrong"),
+            if (errorMessage != null) {
+              return Center(child: Text(errorMessage));
+            } else if (weather != null) {
+              return WeatherInfo(weather: weather);
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
         ),
       ),
     );
