@@ -48,6 +48,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_timezone: ^1.0.7
   logger: ^2.0.1
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

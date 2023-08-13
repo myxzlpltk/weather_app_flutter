@@ -7,11 +7,9 @@ import "package:weather_flutter/domain/repository/weather_repository.dart";
 import "package:weather_flutter/domain/service/location_service.dart";
 import "package:weather_flutter/logger.dart";
 
-part "home_event.dart";
-
-part "home_state.dart";
-
 part "home_bloc.freezed.dart";
+part "home_event.dart";
+part "home_state.dart";
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final WeatherRepository weatherRepository = getIt.get();
